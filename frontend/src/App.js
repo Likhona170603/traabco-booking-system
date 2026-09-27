@@ -5,9 +5,9 @@ import {
   Route
 } from "react-router-dom";
 
-import ServiceSelection from "./pages/ServiceSelection";
-import ReviewBooking from "./pages/ReviewBooking";
-import PickDate from "./pages/PickDate";
+import BookAService from "./pages/BookAService";
+import BookingSuccess from "./pages/BookingSuccess";
+import BookingFailed from "./pages/BookingFailed";
 
 import "./App.css";
 
@@ -19,24 +19,22 @@ function App() {
 
       <Routes>
 
-        {/* Page 1 */}
+        {/* Step 1 + 2 combined: choose service, pick date/time, opens confirm modal */}
         <Route
-          path="/"
-          element={<ServiceSelection />}
+          path="/book"
+          element={<BookAService />}
         />
 
-
-        {/* Page 2 */}
+        {/* Shown after a successful booking submission */}
         <Route
-          path="/review"
-          element={<ReviewBooking />}
+          path="/book/success"
+          element={<BookingSuccess />}
         />
 
-
-        {/* Page 3 */}
+        {/* Shown if the booking submission fails */}
         <Route
-          path="/date"
-          element={<PickDate />}
+          path="/book/failed"
+          element={<BookingFailed />}
         />
 
       </Routes>
@@ -45,4 +43,4 @@ function App() {
   );
 }
 
-export default App;
+export default App;   
