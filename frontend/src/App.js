@@ -1,46 +1,102 @@
-import React from "react";
-import {
-  BrowserRouter,
-  Routes,
-  Route
-} from "react-router-dom";
+import React, { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import BookAService from "./pages/BookAService";
 import BookingSuccess from "./pages/BookingSuccess";
 import BookingFailed from "./pages/BookingFailed";
+import PaymentDetail from "./pages/PaymentDetail"; 
+import MyAccount from "./pages/MyAccount";
+import Login from "./pages/Login";
+import Profile from "./pages/Profile";
+
+
+import RegisterBusinessDetails from "./pages/RegisterBusinessDetails";
+import RegisterContactPerson from "./pages/RegisterContactPerson";
+import RegisterPassword from "./pages/RegisterPassword";
 
 import "./App.css";
 
 function App() {
+  const [userBookings, setUserBookings] = useState([]);
+
+  // Lifted registration states to carry data across routes seamlessly
+  const [businessName, setBusinessName] = useState('Kaya Spaza Shop');
+  const [industry, setIndustry] = useState('Retail');
+  const [cipcNumber, setCipcNumber] = useState('2018/112345/07');
+  const [vatNumber, setVatNumber] = useState('');
+  const [address, setAddress] = useState('14 Madeira Street, Mthatha, 5099');
+  const [townCity, setTownCity] = useState('Mthatha');
+  const [servicesNeeded, setServicesNeeded] = useState('Accounting & bookkeeping');
+  const [fullName, setFullName] = useState('');
+  const [position, setPosition] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   return (
-
     <BrowserRouter>
-
       <Routes>
+        {/*Profile Routing */}
+        <Route path="/profile" element={
+  <Profile 
+    businessName={businessName} setBusinessName={setBusinessName}
+    industry={industry} setIndustry={setIndustry}
+    cipcNumber={cipcNumber} setCipcNumber={setCipcNumber}
+    vatNumber={vatNumber} setVatNumber={setVatNumber}
+    address={address} setAddress={setAddress}
+    townCity={townCity} setTownCity={setTownCity}
+    fullName={fullName} setFullName={setFullName}
+    position={position} setPosition={setPosition}
+    email={email}
+    phone={phone} setPhone={setPhone}
+  />
+} />
 
-        {/* Step 1 + 2 combined: choose service, pick date/time, opens confirm modal */}
-        <Route
-          path="/book"
-          element={<BookAService />}
-        />
 
-        {/* Shown after a successful booking submission */}
-        <Route
-          path="/book/success"
-          element={<BookingSuccess />}
-        />
+        {/*Profile routing  */}
+        <Route path="/" element={<Login />} />
+        <Route path="/dashboard" element={<MyAccount bookings={userBookings} />} />
+        
+        {/* Step 1 Route */}
+        <Route path="/register" element={
+          <RegisterBusinessDetails 
+            businessName={businessName} setBusinessName={setBusinessName}
+            industry={industry} setIndustry={setIndustry}
+            cipcNumber={cipcNumber} setCipcNumber={setCipcNumber}
+            vatNumber={vatNumber} setVatNumber={setVatNumber}
+            address={address} setAddress={setAddress}
+            townCity={townCity} setTownCity={setTownCity}
+            servicesNeeded={servicesNeeded} setServicesNeeded={setServicesNeeded}
+          />
+        } />
 
-        {/* Shown if the booking submission fails */}
-        <Route
-          path="/book/failed"
-          element={<BookingFailed />}
-        />
+        {/* Step 2 Route */}
+        <Route path="/register/contact" element={
+          <RegisterContactPerson 
+            fullName={fullName} setFullName={setFullName}
+            position={position} setPosition={setPosition}
+            email={email} setEmail={setEmail}
+            phone={phone} setPhone={setPhone}
+          />
+        } />
 
+        {/* Step 3 Route */}
+        <Route path="/register/password" element={
+          <RegisterPassword 
+            businessName={businessName} fullName={fullName} email={email}
+            password={password} setPassword={setPassword}
+            confirmPassword={confirmPassword} setConfirmPassword={setConfirmPassword}
+          />
+        } />
+
+        <Route path="/book" element={<BookAService bookings={userBookings} setBookings={setUserBookings} />} />
+        <Route path="/payments/:bookingId" element={<PaymentDetail bookings={userBookings} />} />
+        <Route path="/book/success" element={<BookingSuccess />} />
+        <Route path="/book/failed" element={<BookingFailed />} />
       </Routes>
-
     </BrowserRouter>
   );
 }
 
-export default App;   
+export default App;

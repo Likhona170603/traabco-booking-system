@@ -56,7 +56,8 @@ function isSameDay(a: Date, b: Date) {
   return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
 }
 
-export default function BookAService() {
+export default function BookAService({ setBookings }: { setBookings: React.Dispatch<React.SetStateAction<any[]>> }) {
+
   const navigate = useNavigate();
   const [selectedService, setSelectedService] = useState<Service | null>(services[0]);
   const [viewYear, setViewYear] = useState(2026);
@@ -103,6 +104,21 @@ export default function BookAService() {
     setModalOpen(false);
 
     if (result.ok) {
+        const newBooking = {
+        reference: result.reference || `BK-2026-${Math.floor(100 + Math.random() * 900)}`,
+        service: selectedService?.name || "Consulting Service",
+        scope: selectedService?.consultant || "General Session Parameter",
+        date: selectedDate ? selectedDate.toDateString() : "Today",
+        time: selectedTime,
+        location: "83 Madeira St, Mthatha",
+        consultant: selectedService?.consultant || "L. Takatshana",
+        fee: selectedService?.fee || 2200,
+        status: "Pending" as const
+      };
+      
+      // Update the shared list array:
+      setBookings((prev) => [newBooking, ...prev]);
+      
       navigate('/book/success', { state: { ...draft, reference: result.reference } });
     } else {
       navigate('/book/failed', { state: { reason: result.reason } });
