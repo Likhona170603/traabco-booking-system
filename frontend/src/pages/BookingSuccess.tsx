@@ -39,7 +39,7 @@ export default function BookingSuccess() {
       </div>
 
       <div className="button-row">
-        <button type="button" className="btn-primary" onClick={() => navigate('/dashboard')}>
+        <button type="button" className="btn-primary" onClick={() => navigate('/')}>
           Back to my account
         </button>
         <button type="button" onClick={() => navigate(`/payments/${state.reference}`)}>

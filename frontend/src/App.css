@@ -423,3 +423,1281 @@ html, body, #root {
   width: 100%;
   max-width: 420px;
 }
+
+
+/*======================================
+Payment details — Full Page Expansion Layout
+======================================*/
+.pd-page {
+  min-height: 100vh;
+  width: 100%;
+  background: #ffffff; /* Swapped to match full sheet background canvas */
+  padding: 0;          /* Stripped top and left spacing constraints */
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.pd-frame {
+  width: 100%;
+  max-width: 100%;     /* Expanded from 893px to fill full display screen edge-to-edge */
+  background: #fff;
+  padding: 20px 40px;  /* Cleaned interior side framing gutters */
+  min-height: 100vh;   /* Grows to occupy absolute vertical baseline space */
+  box-sizing: border-box;
+}
+
+.pd-screen-label {
+  padding: 12px 0 8px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #111;
+  text-transform: uppercase;
+  line-height: 12px;
+}
+
+/* Header Banner Layout — Stretching Edge to Edge */
+.pd-header {
+  height: 45px;        /* Slightly enhanced breathing room height */
+  background: #062a54;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.pd-brand {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.pd-header-divider {
+  width: 1px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.35);
+  margin: 0 12px;
+}
+
+.pd-header-sub {
+  font-size: 11px;
+  color: #a9bdd6;
+}
+
+.pd-back {
+  margin-left: auto;
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: 11px;
+  color: #8fa6c4;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.pd-back:hover {
+  color: #fff;
+}
+
+/* Title row layout */
+.pd-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #eef0f2; /* Separates title elegantly across massive screens */
+}
+
+.pd-title {
+  margin: 0;
+  font-size: 18px;    /* Scale text hierarchy beautifully for a wide layout */
+  font-weight: 600;
+  color: #000;
+  line-height: 22px;
+}
+
+.pd-subtitle {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: #555;
+  line-height: 16px;
+}
+
+.pd-title-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.pd-text-btn {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: 12px;
+  font-weight: 500;
+  color: #1a5aa8;
+  cursor: pointer;
+}
+
+.pd-text-btn:hover {
+  text-decoration: underline;
+}
+
+.pd-pill {
+  display: inline-block;
+  background: #e3eed9;
+  color: #2b5a1f;
+  border-radius: 999px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.pd-pill-lg {
+  padding: 4px 12px;
+  font-size: 11px;
+}
+
+.pd-pill-sm {
+  padding: 2px 8px;
+  font-size: 10px;
+  margin-top: 4px;
+}
+
+/* Fluid Responsive Grid Matrix */
+.pd-grid {
+  margin-top: 32px;
+  padding: 0;
+  display: grid;
+  /* Converted static px columns to proportional fraction units to fill available view fields */
+  grid-template-columns: 1fr 1fr 280px; 
+  column-gap: 40px;
+  row-gap: 24px;
+  align-items: start;
+}
+
+.pd-heading {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #111;
+  line-height: 14px;
+  text-transform: uppercase;
+}
+
+.pd-info-heading {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.pd-info-heading-spacer {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.pd-receipt-heading {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.pd-c1 { grid-column: 1; }
+.pd-c2 { grid-column: 2; }
+.pd-r1 { grid-row: 2; }
+.pd-r2 { grid-row: 3; }
+.pd-r3 { grid-row: 4; }
+
+.pd-label {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: #666;
+  text-transform: uppercase;
+  line-height: 14px;
+}
+
+.pd-value {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #111;
+  line-height: 18px;
+  font-weight: 500;
+}
+
+.pd-amount {
+  margin-top: 6px;
+  font-size: 26px;
+  font-weight: 600;
+  color: #000;
+  line-height: 30px;
+}
+
+.pd-link {
+  color: #1a5aa8;
+  text-decoration: none;
+}
+.pd-link:hover {
+  text-decoration: underline;
+}
+
+/* Right-hand side panel column anchoring */
+.pd-side {
+  grid-column: 3;
+  grid-row: 2 / span 4;
+  width: 100%;         /* Adapts dynamically inside the 280px grid track boundary */
+  background: #f8fafc; /* Injected soft panel container card to anchor actions on big pages */
+  padding: 24px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  box-sizing: border-box;
+}
+
+.pd-receipt-file {
+  text-align: center;
+  font-size: 12px;
+  line-height: 16px;
+  color: #333;
+}
+
+.pd-btn-primary {
+  margin-top: 20px;
+  width: 100%;
+  height: 40px;        /* Scaled up action hit target for improved UX layout flow */
+  background: #0b4a82;
+  border: 0;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.pd-btn-primary:hover {
+  background: #093d6c;
+}
+
+.pd-help {
+  margin-top: 32px;
+  font-size: 12px;
+  line-height: 18px;
+  color: #1a5aa8;
+}
+
+.pd-help-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #111;
+}
+
+/* Bottom Highlight Tip Box Banner */
+.pd-tip {
+  grid-column: 1 / span 2;
+  grid-row: 5;
+  margin-top: 12px;
+  background: #f1f5f9;
+  padding: 16px 20px;
+  border-radius: 6px;
+}
+
+.pd-tip-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #0f172a;
+  line-height: 16px;
+}
+
+.pd-tip-text {
+  margin-top: 6px;
+  font-size: 12px;
+  line-height: 18px;
+  color: #475569;
+}
+
+/* Connected reference footer section */
+.pd-linked {
+  grid-column: 1 / span 2;
+  grid-row: 6;
+  margin-top: 12px;
+  border-top: 1px dashed #e2e8f0;
+  padding-top: 16px;
+}
+
+.pd-linked-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pd-linked-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #000;
+}
+
+.pd-linked-meta {
+  font-size: 12px;
+  color: #666;
+  margin-top: 2px;
+}
+
+.pd-view {
+  background: none;
+  border: 1px solid #1a5aa8;
+  border-radius: 4px;
+  padding: 6px 14px;
+  font-size: 12px;
+  color: #1a5aa8;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.pd-view:hover {
+  background: #1a5aa8;
+  color: #fff;
+}
+
+.pd-back:focus-visible,
+.pd-text-btn:focus-visible,
+.pd-btn-primary:focus-visible,
+.pd-view:focus-visible {
+  outline: 2px solid #0b4a82;
+  outline-offset: 2px;
+}
+
+/* Media Breakpoint Matrix updates */
+@media (max-width: 900px) {
+  .pd-frame { padding: 16px; }
+  .pd-grid {
+    grid-template-columns: 1fr; /* Shifts layout to single-column card stack on small screens */
+    row-gap: 20px;
+  }
+  .pd-info-heading-spacer { display: none; }
+  .pd-side { grid-column: 1 / -1; width: 100%; }
+  .pd-tip, .pd-linked { grid-column: 1 / -1; }
+}
+/*====================================================
+My Account =========================================*/
+.ma-shell {
+  display: grid;
+  grid-template-columns: 171px 1fr;
+  min-height: 100vh;
+  background: #fff;
+  font-size: 10px;
+  color: #111;
+}
+
+/* Sidebar */
+.ma-sidebar {
+  background: #062a54;
+  color: #cfdaea;
+}
+
+.ma-brand {
+  padding: 14px 13px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ma-brand-name {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.ma-brand-sub {
+  margin-top: 1px;
+  font-size: 8px;
+  color: #8fa6c4;
+}
+
+.ma-nav {
+  padding-top: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ma-nav-item {
+  height: 26px;
+  padding: 0 13px;
+  background: none;
+  border: 0;
+  text-align: left;
+  color: #cfdaea;
+  font-size: 9.5px;
+  cursor: pointer;
+}
+
+.ma-nav-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.ma-nav-item.is-active {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.ma-nav-group {
+  padding: 8px 13px 4px;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  color: #6d86a6;
+}
+
+/* Main */
+.ma-main {
+  padding: 0 22px 32px 18px;
+  min-width: 0;
+}
+
+.ma-crumbs {
+  padding-top: 20px;
+  font-size: 9px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.ma-crumb-link {
+  color: #1a5aa8;
+  text-decoration: none;
+}
+
+.ma-crumb-sep {
+  color: #333;
+}
+
+.ma-title-row {
+  margin-top: 13px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ma-title {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 500;
+  color: #000;
+}
+
+.ma-title-actions {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.ma-text-btn {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: 10px;
+  color: #111;
+  cursor: pointer;
+}
+
+.ma-btn-primary {
+  height: 26px;
+  padding: 0 13px;
+  background: #0b4a82;
+  border: 0;
+  color: #fff;
+  font-size: 9.5px;
+  cursor: pointer;
+}
+
+.ma-btn-primary:hover {
+  background: #093d6c;
+}
+
+/* Layout */
+.ma-layout {
+  margin-top: 26px;
+  display: grid;
+  grid-template-columns: 1fr 172px;
+  column-gap: 24px;
+  align-items: start;
+}
+
+.ma-content {
+  padding-left: 15px;
+  min-width: 0;
+}
+
+.ma-section {
+  margin-bottom: 38px;
+}
+
+.ma-heading {
+  margin: 0 0 14px;
+  font-size: 8.5px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: #111;
+  text-transform: uppercase;
+}
+
+.ma-count {
+  letter-spacing: 0;
+  color: #555;
+}
+
+/* Client */
+.ma-client {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 10px;
+}
+
+.ma-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #e4eef9;
+  color: #1a4f8f;
+  font-size: 8px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ma-client-name {
+  font-size: 9px;
+  font-weight: 500;
+  color: #000;
+}
+
+.ma-client-meta {
+  font-size: 8px;
+  color: #111;
+  line-height: 11px;
+}
+
+/* Tabs */
+.ma-tabs {
+  display: flex;
+  gap: 18px;
+  border-bottom: 1px solid #e6e6e6;
+  margin-bottom: 4px;
+}
+
+.ma-tab {
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  padding: 0 0 7px;
+  margin-bottom: -1px;
+  font-size: 9.5px;
+  color: #333;
+  cursor: pointer;
+}
+
+.ma-tab.is-active {
+  color: #1a4f8f;
+  font-weight: 500;
+  border-bottom-color: #0b4a82;
+}
+
+.ma-tab-count {
+  margin-left: 4px;
+  font-size: 8px;
+  color: #777;
+}
+
+/* List */
+.ma-row {
+  display: grid;
+  grid-template-columns: 1fr 88px 82px 78px;
+  align-items: center;
+  column-gap: 12px;
+  padding: 9px 9px 9px 9px;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+}
+
+.ma-row.is-selected {
+  background: #e4eef9;
+}
+
+.ma-row-title {
+  font-size: 10.5px;
+  font-weight: 500;
+  color: #000;
+  line-height: 14px;
+}
+
+.ma-row.is-selected .ma-row-title {
+  color: #1a4f8f;
+}
+
+.ma-row-scope {
+  font-size: 8.5px;
+  color: #111;
+  line-height: 12px;
+}
+
+.ma-row.is-selected .ma-row-scope {
+  color: #2a62a8;
+}
+
+.ma-row-meta {
+  margin-top: 2px;
+  font-size: 8px;
+  color: #555;
+  line-height: 11px;
+}
+
+.ma-row-fee {
+  font-size: 9.5px;
+  font-weight: 500;
+  text-align: right;
+  color: #000;
+}
+
+.ma-pill {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 999px;
+  font-size: 8px;
+  font-weight: 500;
+}
+
+.ma-pill-pending {
+  background: #fbefd2;
+  color: #8a5a00;
+}
+
+.ma-pill-confirmed {
+  background: #d9e8f8;
+  color: #1a4f8f;
+}
+
+.ma-pill-completed {
+  background: #e3eed9;
+  color: #2b5a1f;
+}
+
+.ma-pill-cancelled {
+  background: #fbe1df;
+  color: #a12a22;
+}
+
+.ma-view {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: 8.5px;
+  color: #1a5aa8;
+  text-align: right;
+  cursor: pointer;
+}
+
+.ma-view:hover {
+  text-decoration: underline;
+}
+
+.ma-empty {
+  padding: 24px 9px;
+  color: #666;
+  font-size: 9.5px;
+}
+
+/* Right rail */
+.ma-rail {
+  padding-top: 0;
+}
+
+.ma-summary {
+  margin: 0 0 0;
+  padding: 0 0 0 9px;
+}
+
+.ma-summary > div {
+  display: flex;
+  justify-content: space-between;
+  font-size: 8.5px;
+  line-height: 15.5px;
+}
+
+.ma-summary dt {
+  margin: 0;
+}
+
+.ma-summary dd {
+  margin: 0;
+  font-weight: 500;
+  text-align: right;
+}
+
+.ma-summary-fee {
+  margin-top: 9px;
+  font-size: 9.5px !important;
+}
+
+.ma-status-title {
+  margin-top: 36px;
+  font-size: 8.5px;
+  color: #000;
+}
+
+.ma-status-list {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  font-size: 8.5px;
+  line-height: 15px;
+}
+
+.ma-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.ma-dot-green { background: #2fa36b; }
+.ma-dot-red { background: #d9534f; }
+.ma-dot-blue { background: #2a62a8; }
+.ma-dot-amber { background: #e0a020; }
+
+.ma-policy {
+  margin-top: 36px;
+  background: #e4eef9;
+  border-left: 2px solid #0b4a82;
+  padding: 9px 10px 10px 12px;
+  margin-left: -1px;
+}
+
+.ma-policy-title {
+  font-size: 8px;
+  font-weight: 500;
+  color: #1a4f8f;
+}
+
+.ma-policy-text {
+  margin-top: 3px;
+  font-size: 8.5px;
+  line-height: 11.5px;
+  color: #2a62a8;
+}
+
+.ma-nav-item:focus-visible,
+.ma-tab:focus-visible,
+.ma-btn-primary:focus-visible,
+.ma-text-btn:focus-visible,
+.ma-view:focus-visible {
+  outline: 2px solid #5b9bd5;
+  outline-offset: 1px;
+}
+
+@media (max-width: 900px) {
+  .ma-shell {
+    grid-template-columns: 1fr;
+  }
+  .ma-layout {
+    grid-template-columns: 1fr;
+    row-gap: 24px;
+  }
+  .ma-row {
+    grid-template-columns: 1fr auto;
+    row-gap: 6px;
+  }
+}
+/* =====================================================
+   TRAABCO — Full Viewport Sign In Portal Layout Style 
+===================================================== */
+.lg-page {
+  min-height: 100vh;
+  width: 100%;
+  background: #f4f4f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.lg-frame {
+  width: 100%;
+  max-width: 660px;
+  min-height: 660px;
+  background: #ffffff;
+  padding: 40px 60px 50px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.lg-frame-indicator {
+  position: absolute;
+  top: 40px;
+  left: 60px;
+  font-size: 14px;
+  color: #c5c5c5;
+  font-weight: 400;
+}
+
+/* Brand Identity Row */
+.lg-brand-section {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 80px 0 40px;
+}
+
+.lg-icon-box {
+  width: 36px;
+  height: 36px;
+  background: #064073;
+  color: #ffffff;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lg-brand-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111111;
+  margin: 0;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+
+.lg-brand-sub {
+  font-size: 11px;
+  color: #666666;
+  margin: 2px 0 0;
+}
+
+/* Form Styling Layout */
+.lg-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.lg-form-title {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #222222;
+  margin: 0 0 2px;
+}
+
+.lg-form-subtitle {
+  font-size: 11px;
+  color: #777777;
+  margin: 0 0 24px;
+}
+
+.lg-input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.lg-input-group label {
+  font-size: 11px;
+  color: #555555;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.lg-input-group input {
+  width: 100%;
+  height: 34px;
+  border: 0;
+  background: transparent;
+  font-size: 12px;
+  color: #222222;
+  padding: 0;
+  outline: none;
+}
+
+/* Password Bullet Point Alignment Spacing Match */
+.lg-input-group input[type="password"] {
+  font-size: 16px;
+  letter-spacing: 0.15em;
+}
+
+.lg-forgot-row {
+  display: flex;
+  justify-content: flex-end;
+  margin: 4px 0 20px;
+}
+
+.lg-link-btn {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: 11px;
+  color: #0c5292;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.lg-link-btn:hover {
+  text-decoration: underline;
+}
+
+.lg-submit-btn {
+  width: 100%;
+  height: 38px;
+  background: #0c447c;
+  color: #ffffff;
+  border: 0;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.15s ease;
+}
+
+.lg-submit-btn:hover {
+  background: #09345e;
+}
+
+/* Footer layout anchoring */
+.lg-footer {
+  margin-top: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-top: 30px;
+}
+
+.lg-access-levels {
+  font-size: 10px;
+  color: #555555;
+  letter-spacing: 0.02em;
+}
+
+.lg-address {
+  font-size: 9.5px;
+  color: #666666;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 500px) {
+  .lg-frame {
+    padding: 30px 24px;
+    min-height: 100vh;
+  }
+  .lg-frame-indicator {
+    top: 20px;
+    left: 24px;
+  }
+  .lg-brand-section {
+    margin: 50px 0 30px;
+  }
+}
+/* =====================================================
+   TRAABCO — Register My Business Full Screen Layout Matrix 
+===================================================== */
+.rb-page {
+  min-height: 100vh;
+  width: 100%;
+  background: #f4f4f4;
+  padding: 15px 22px 0 2px;
+  box-sizing: border-box;
+}
+
+.rb-frame {
+  width: 100%;
+  max-width: 900px;
+  background: #ffffff;
+  padding: 0 13px 24px;
+  min-height: 520px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.rb-frame-indicator {
+  display: block;
+  padding: 12px 0 0;
+  height: 32px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #111111;
+  text-transform: uppercase;
+  line-height: 12px;
+  box-sizing: border-box;
+}
+
+/* Header Navbar Styling Banner */
+.rb-header {
+  height: 34px;
+  background: #062a54;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  color: #ffffff;
+  box-sizing: border-box;
+}
+
+.rb-brand {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.rb-header-divider {
+  width: 1px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.35);
+  margin: 0 8px;
+}
+
+.rb-header-sub {
+  font-size: 9px;
+  color: #a9bdd6;
+}
+
+.rb-signin-link {
+  margin-left: auto;
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: 9.5px;
+  color: #8fa6c4;
+  cursor: pointer;
+}
+
+.rb-signin-link:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* Horizontal Pipeline Progress indicators bar */
+.rb-progress-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 24px 0 30px;
+  padding: 0 20px;
+}
+
+.rb-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #222222;
+}
+
+.rb-step-num {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #0c447c;
+  color: #ffffff;
+  font-size: 9.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rb-step-num.inactive {
+  background: transparent;
+  color: #666666;
+  border: 1px solid #cccccc;
+}
+
+.rb-step:not(.active) .rb-step-text {
+  color: #555554;
+}
+
+/* Structural Two-Column Grid Setup Container */
+.rb-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  column-gap: 50px;
+  padding: 0 10px 0 2px;
+  align-items: start;
+}
+
+.rb-form-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.rb-section-title {
+  margin: 0 0 20px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #000000;
+  line-height: 14px;
+}
+
+/* Rows matching dual input columns side by side structure */
+.rb-field-row {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.rb-input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+  flex: 1;
+}
+
+.rb-input-group.full-width {
+  width: 100%;
+}
+
+.rb-input-group label {
+  font-size: 10.5px;
+  color: #111111;
+  margin-bottom: 6px;
+  font-weight: 400;
+}
+
+.rb-required {
+  color: #b91c1c;
+  margin-left: 2px;
+}
+
+.rb-input-group input {
+  width: 100%;
+  height: 30px;
+  border: 1px solid #cccccc;
+  background: #ffffff;
+  font-size: 11px;
+  color: #111111;
+  padding: 0 8px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.rb-input-group input:focus {
+  border-color: #0c447c;
+}
+
+.rb-helper-text {
+  font-size: 9.5px;
+  color: #666665;
+  margin-top: 4px;
+  line-height: 12px;
+}
+
+/* Form Action Buttons Wrapper layout */
+.rb-form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  margin-top: 24px;
+  padding-right: 2px;
+}
+
+.rb-cancel-btn {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: 11px;
+  color: #111111;
+  cursor: pointer;
+}
+
+.rb-cancel-btn:hover {
+  text-decoration: underline;
+}
+
+.rb-next-btn {
+  height: 30px;
+  background: #062a54;
+  color: #ffffff;
+  border: 0;
+  padding: 0 16px;
+  font-size: 10.5px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 1px;
+}
+
+.rb-next-btn:hover {
+  background: #041c38;
+}
+
+/* Right Information Panel Sidebar Column layout */
+.rb-sidebar-column {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2px;
+}
+
+.rb-panel-heading {
+  margin: 0 0 12px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #000000;
+  text-transform: uppercase;
+}
+
+.rb-panel-description {
+  font-size: 10px;
+  line-height: 14px;
+  color: #333333;
+  margin: 0 0 28px;
+}
+
+.rb-options-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.rb-options-title {
+  margin: 0 0 8px;
+  font-size: 10.5px;
+  font-weight: 400;
+  color: #4b5563;
+}
+
+.rb-options-list {
+  font-size: 10px;
+  line-height: 16px;
+  color: #1a5aa8;
+}
+
+.rb-options-list span {
+  cursor: pointer;
+}
+
+.rb-options-list span:hover {
+  text-decoration: underline;
+}
+
+/* Media Breakpoint constraints alignment rules */
+@media (max-width: 800px) {
+  .rb-grid-container {
+    grid-template-columns: 1fr;
+    row-gap: 32px;
+  }
+  .rb-sidebar-column {
+    border-top: 1px dashed #e5e7eb;
+    padding-top: 24px;
+  }
+  .rb-field-row {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
