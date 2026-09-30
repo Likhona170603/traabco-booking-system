@@ -1702,304 +1702,156 @@ My Account =========================================*/
 }
 
 /* =====================================================
-   TRAABCO — Forgot Password Page
-   ===================================================== */
+   TRAABCO — Forgot password / Reset password
+   (all classes prefixed "au-")
+===================================================== */
+.au-page {
+  --au-navy: #0a2e5c;
+  --au-blue: #0d4a80;
+  --au-blue-link: #1b5f96;
+  --au-text: #111827;
+  --au-border: #cfd6df;
+  --au-green: #1f9d72;
+  --au-green-dark: #1d6b3f;
+  --au-green-bg: #e6f3d8;
+  --au-red: #d64545;
+  --au-amber: #d99a1e;
 
-.fp-page {
   min-height: 100vh;
-  width: 100%;
-  background: #ffffff;
-  color: #111111;
-  font-family: Arial, Helvetica, sans-serif;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  padding: 24px 16px;
+  box-sizing: border-box;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--au-text);
 }
 
-/* Top header */
+.au-card {
+  width: 100%;
+  max-width: 520px;
+}
 
-.fp-header {
-  width: calc(100% - 20px);
-  height: 68px;
-  margin: 5px auto 0;
-  padding: 0 24px;
-  background: #062a54;
+/* Header bar */
+.au-header {
+  background: var(--au-navy);
+  color: #fff;
+  padding: 16px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-sizing: border-box;
-}
-
-.fp-brand {
-  display: flex;
-  align-items: center;
   gap: 12px;
+  flex-wrap: wrap;
 }
-
-.fp-lock-box {
-  width: 42px;
-  height: 42px;
-  background: #1266a3;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.au-header-brand { display: flex; align-items: center; gap: 12px; }
+.au-icon-box {
+  width: 40px; height: 40px;
+  background: var(--au-blue);
+  display: grid; place-items: center;
   flex-shrink: 0;
 }
-
-.fp-brand-name {
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 17px;
+.au-brand-title { font-size: 16px; font-weight: 600; letter-spacing: 0.02em; }
+.au-brand-sub { font-size: 12px; color: rgba(255, 255, 255, 0.65); }
+.au-header-back {
+  background: none; border: 0; padding: 0; cursor: pointer;
+  color: rgba(255, 255, 255, 0.7); font: inherit; font-size: 13px;
 }
+.au-header-back:hover { color: #fff; }
 
-.fp-brand-subtitle {
-  color: #9db0c3;
-  font-size: 10px;
-  line-height: 13px;
+.au-body { padding: 40px 24px 8px; }
+
+/* Lock icon + headings */
+.au-lock {
+  width: 28px; margin: 0 auto 28px;
+  color: #d6a23a;
+  display: flex; justify-content: center;
 }
-
-.fp-header-back {
-  background: none;
-  border: none;
-  padding: 0;
-  color: #a9bdd1;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-.fp-header-back:hover {
-  color: #ffffff;
-}
-
-/* Main content */
-
-.fp-content {
-  width: min(100% - 48px, 650px);
-  margin: 40px auto 0;
-  text-align: center;
-}
-
-/* Main lock icon */
-
-.fp-main-lock {
-  color: #a28a43;
-  margin-bottom: 25px;
-}
-
-.fp-main-lock svg {
-  display: block;
-  margin: 0 auto;
-}
-
-/* Heading */
-
-.fp-title {
-  margin: 0;
-  color: #111111;
-  font-size: 20px;
-  line-height: 28px;
-  font-weight: 600;
-}
-
-.fp-description {
-  max-width: 590px;
-  margin: 8px auto 0;
-  color: #222222;
-  font-size: 13px;
-  line-height: 21px;
+.au-title { font-size: 22px; font-weight: 500; text-align: center; margin: 0 0 12px; }
+.au-lead {
+  text-align: center; font-size: 14.5px; line-height: 1.6;
+  margin: 0 auto 32px; max-width: 440px; color: var(--au-text);
 }
 
 /* Form */
-
-.fp-form {
-  margin-top: 52px;
-  text-align: left;
+.au-form { max-width: 420px; margin: 0 auto; }
+.au-label { display: block; font-size: 14px; margin: 0 0 10px; }
+.au-required { color: var(--au-red); }
+.au-input {
+  width: 100%; box-sizing: border-box;
+  padding: 12px 14px; font: inherit; font-size: 15px;
+  border: 1px solid var(--au-border); border-radius: 4px; background: #fff;
 }
+.au-input:focus { outline: 2px solid var(--au-blue-link); outline-offset: 1px; border-color: var(--au-blue-link); }
+.au-hint { font-size: 13.5px; line-height: 1.5; margin: 18px 0 20px; }
 
-.fp-field {
-  width: 100%;
+.au-btn {
+  width: 100%; padding: 15px 16px; margin-top: 8px;
+  background: var(--au-blue); color: #fff;
+  border: 0; border-radius: 2px; cursor: pointer;
+  font: inherit; font-size: 15px;
 }
+.au-btn:hover:not(:disabled) { background: #0a3c69; }
+.au-btn:focus-visible { outline: 2px solid var(--au-blue-link); outline-offset: 2px; }
+.au-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
-.fp-field label {
-  display: block;
-  margin-bottom: 12px;
-  color: #222222;
-  font-size: 12px;
-  font-weight: 400;
+.au-center { text-align: center; font-size: 13.5px; margin: 20px 0 0; }
+.au-link {
+  background: none; border: 0; padding: 0; cursor: pointer;
+  color: var(--au-blue-link); font: inherit;
 }
+.au-link:hover, .au-help a:hover, .au-footer a:hover { text-decoration: underline; }
 
-.fp-field label span {
-  color: #b44a4a;
+/* Manual reset help block */
+.au-help { max-width: 440px; margin: 48px auto 0; font-size: 13.5px; line-height: 1.6; }
+.au-help-title { font-size: 14px; font-weight: 600; margin: 0 0 6px; }
+.au-help p { margin: 0; }
+.au-help a, .au-footer a { color: var(--au-blue-link); text-decoration: none; }
+
+/* Footer */
+.au-footer { padding: 36px 24px 16px; text-align: center; }
+.au-footer-line { margin: 0; font-size: 13px; }
+
+/* Verified banner */
+.au-verified {
+  display: flex; align-items: center; gap: 12px;
+  max-width: 440px; margin: 0 auto 40px; color: var(--au-green-dark);
 }
+.au-verified-title { font-size: 14.5px; font-weight: 500; }
+.au-verified-sub { font-size: 13px; color: var(--au-green); }
+.au-verified.is-expired { color: var(--au-red); }
+.au-verified.is-expired .au-verified-sub { color: var(--au-red); }
 
-.fp-field input {
-  width: 100%;
-  height: 35px;
-  padding: 0 10px;
-  border: none;
-  border-bottom: 1px solid #d0d0d0;
-  background: #ffffff;
-  color: #222222;
-  font-size: 13px;
-  outline: none;
-  box-sizing: border-box;
+/* Strength meter */
+.au-meter { display: flex; gap: 6px; margin: 14px 0 8px; }
+.au-meter-seg { flex: 1; height: 5px; border-radius: 3px; background: #e3e7ec; transition: background 0.2s; }
+.au-meter-seg.lvl-1 { background: var(--au-red); }
+.au-meter-seg.lvl-2 { background: var(--au-amber); }
+.au-meter-seg.lvl-3, .au-meter-seg.lvl-4 { background: var(--au-green); }
+.au-strength { font-size: 13px; margin: 0 0 22px; }
+.au-strength.lvl-1 { color: var(--au-red); }
+.au-strength.lvl-2 { color: var(--au-amber); }
+.au-strength.lvl-3, .au-strength.lvl-4 { color: var(--au-green-dark); }
+
+/* Requirements */
+.au-rules { margin: 8px 0 26px; }
+.au-rules-title { font-size: 13.5px; font-weight: 500; margin: 0 0 10px; }
+.au-rules ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.au-rules li { display: flex; align-items: center; gap: 10px; font-size: 13.5px; }
+.au-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--au-red); flex-shrink: 0; }
+.au-rules li.met .au-dot { background: var(--au-green); }
+.au-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Match indicator */
+.au-match {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 14px; margin: 18px 0 20px; font-size: 13.5px;
 }
+.au-match.ok { background: var(--au-green-bg); color: var(--au-green-dark); }
+.au-match.bad { background: #fbe8e8; color: #9b2c2c; }
 
-.fp-field input:focus {
-  border-bottom: 2px solid #145789;
-}
+.au-note { font-size: 13px; text-align: center; margin: 14px 0 0; }
 
-.fp-field input::placeholder {
-  color: #333333;
-  opacity: 1;
-}
-
-/* Validation error */
-
-.fp-error {
-  margin: 8px 0 0;
-  color: #b44a4a;
-  font-size: 11px;
-  line-height: 16px;
-}
-
-/* Instruction underneath email */
-
-.fp-instruction {
-  max-width: 590px;
-  margin: 25px 0 18px;
-  color: #222222;
-  font-size: 12px;
-  line-height: 19px;
-}
-
-/* Send reset link */
-
-.fp-submit-button {
-  width: 100%;
-  height: 42px;
-  border: none;
-  border-radius: 0;
-  background: #145789;
-  color: #ffffff;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-.fp-submit-button:hover {
-  background: #0e4773;
-}
-
-/* Remembered it */
-
-.fp-remembered {
-  margin: 16px 0 0;
-  text-align: center;
-  color: #222222;
-  font-size: 12px;
-  line-height: 18px;
-}
-
-.fp-remembered button {
-  padding: 0;
-  border: none;
-  background: none;
-  color: #145789;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-.fp-remembered button:hover {
-  text-decoration: underline;
-}
-
-/* Help section */
-
-.fp-help {
-  margin-top: 52px;
-  text-align: left;
-}
-
-.fp-help h2 {
-  margin: 0 0 8px;
-  color: #111111;
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.fp-help p {
-  margin: 0;
-  color: #222222;
-  font-size: 12px;
-  line-height: 19px;
-}
-
-.fp-help strong {
-  color: #145789;
-  font-weight: 500;
-}
-
-.fp-contact {
-  margin-top: 30px !important;
-  text-align: center;
-}
-
-/* Confirmation state */
-
-.fp-success-icon {
-  margin-bottom: 20px;
-  color: #4e7853;
-}
-
-.fp-success-icon svg {
-  display: block;
-  margin: 0 auto;
-}
-
-/* Mobile */
-
-@media (max-width: 600px) {
-  .fp-header {
-    width: calc(100% - 12px);
-    padding: 0 14px;
-  }
-
-  .fp-brand {
-    gap: 8px;
-  }
-
-  .fp-lock-box {
-    width: 38px;
-    height: 38px;
-  }
-
-  .fp-brand-name {
-    font-size: 13px;
-  }
-
-  .fp-brand-subtitle {
-    max-width: 190px;
-    font-size: 9px;
-  }
-
-  .fp-header-back {
-    font-size: 11px;
-  }
-
-  .fp-content {
-    width: calc(100% - 40px);
-    margin-top: 32px;
-  }
-
-  .fp-title {
-    font-size: 19px;
-  }
-
-  .fp-form {
-    margin-top: 40px;
-  }
-
-  .fp-help {
-    margin-top: 42px;
-  }
+@media (max-width: 480px) {
+  .au-body { padding: 32px 16px 8px; }
+  .au-header { padding: 14px 16px; }
 }

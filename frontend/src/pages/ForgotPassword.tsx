@@ -6,137 +6,68 @@ export default function ForgotPassword() {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState("");
   const [submitted, setSubmitted] = useState(false);
-
-  const validateEmail = (value: string) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const trimmedEmail = email.trim();
-
-    setEmailError("");
-
-    if (!trimmedEmail) {
-      setEmailError("Email address is required.");
+    if (!email.trim()) {
       return;
     }
 
-    if (!validateEmail(trimmedEmail)) {
-      setEmailError("Please enter a valid email address.");
-      return;
-    }
-
-    // Stay on this page and display the confirmation.
     setSubmitted(true);
   };
 
-  /*
-   * Confirmation state
-   */
-  if (submitted) {
-    return (
-      <div className="fp-page">
-        <header className="fp-header">
-          <div className="fp-brand">
-            <div className="fp-lock-box">
+  return (
+    <div className="au-page">
+      <div className="au-card">
+
+        {/* Header */}
+        <header className="au-header">
+          <div className="au-header-brand">
+            <div className="au-icon-box">
               <svg
                 viewBox="0 0 24 24"
-                width="21"
-                height="21"
+                width="20"
+                height="20"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               >
-                <rect x="4" y="10" width="16" height="11" rx="2" />
-                <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+                <rect x="3" y="11" width="18" height="11" rx="2" />
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
               </svg>
             </div>
 
             <div>
-              <div className="fp-brand-name">TRAABCO</div>
-              <div className="fp-brand-subtitle">
-                Tacks Registered Accountants &amp; Business Consultants
+              <div className="au-brand-title">TRAABCO</div>
+              <div className="au-brand-sub">
+                Management portal · Mthatha, EC
               </div>
             </div>
           </div>
 
+          {/* Back to Login */}
           <button
             type="button"
-            className="fp-header-back"
-            onClick={() => navigate("/login")}
+            className="au-header-back"
+            onClick={() => navigate("/")}
           >
-            ← Back to sign in
+            Back to Login
           </button>
         </header>
 
-        <main className="fp-content">
-          <div className="fp-success-icon">
+        {/* Main Content */}
+        <main className="au-body">
+
+          {/* Lock Icon */}
+          <div className="au-lock">
             <svg
               viewBox="0 0 24 24"
-              width="30"
-              height="30"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <circle cx="12" cy="12" r="9" />
-              <path d="m8 12 2.5 2.5L16 9" />
-            </svg>
-          </div>
-
-          <h1 className="fp-title">Check your email</h1>
-
-          <p className="fp-description">
-            If an account exists for <strong>{email}</strong>, we have sent
-            you a password reset link.
-          </p>
-
-          <button
-            type="button"
-            className="fp-submit-button"
-            onClick={() => navigate("/login")}
-          >
-            Back to sign in
-          </button>
-
-          <div className="fp-help">
-            <h2>Don't have access to your email?</h2>
-
-            <p>
-              Call Traabco directly on{" "}
-              <strong>047 531 0000</strong> during office hours and we will
-              verify your identity and reset your account manually.
-            </p>
-
-            <p className="fp-contact">
-              No. 83 Madeira Street, Mthatha · info@traabco.co.za
-            </p>
-          </div>
-        </main>
-      </div>
-    );
-  }
-
-  /*
-   * Forgot Password form
-   */
-  return (
-    <div className="fp-page">
-      <header className="fp-header">
-        <div className="fp-brand">
-          <div className="fp-lock-box">
-            <svg
-              viewBox="0 0 24 24"
-              width="21"
-              height="21"
+              width="28"
+              height="28"
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
@@ -145,107 +76,132 @@ export default function ForgotPassword() {
             >
               <rect x="4" y="10" width="16" height="11" rx="2" />
               <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+              <circle cx="12" cy="15.5" r="1" />
             </svg>
           </div>
 
-          <div>
-            <div className="fp-brand-name">TRAABCO</div>
-            <div className="fp-brand-subtitle">
-              Tacks Registered Accountants &amp; Business Consultants
+          <h1 className="au-title">
+            Forgot your password?
+          </h1>
+
+          <p className="au-lead">
+            Enter the email address associated with your TRAABCO account.
+            We will help you reset your password.
+          </p>
+
+          {!submitted ? (
+            <form className="au-form" onSubmit={handleSubmit}>
+
+              {/* Email */}
+              <label className="au-label" htmlFor="forgot-email">
+                Email address <span className="au-required">*</span>
+              </label>
+
+              <input
+                id="forgot-email"
+                className="au-input"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email address"
+                required
+              />
+
+              <p className="au-hint">
+                Enter the email address you used when registering your
+                TRAABCO account.
+              </p>
+
+              {/* Submit */}
+              <button
+                type="submit"
+                className="au-btn"
+              >
+                Continue
+              </button>
+
+              {/* Back to Login */}
+              <p className="au-center">
+                Remember your password?{" "}
+                <button
+                  type="button"
+                  className="au-link"
+                  onClick={() => navigate("/")}
+                >
+                  Return to Login
+                </button>
+              </p>
+            </form>
+          ) : (
+            <div className="au-form">
+
+              {/* Success Message */}
+              <div className="au-verified">
+                <div>
+                  <div className="au-verified-title">
+                    Email address received
+                  </div>
+
+                  <div className="au-verified-sub">
+                    Your password reset request has been received.
+                  </div>
+                </div>
+              </div>
+
+              <p className="au-hint">
+                A password reset link has been prepared for{" "}
+                <strong>{email}</strong>.
+              </p>
+
+              {/* Continue to Reset Password */}
+              <button
+                type="button"
+                className="au-btn"
+                onClick={() => navigate("/reset-password")}
+              >
+                Continue to Reset Password
+              </button>
+
+              {/* Return to Login */}
+              <p className="au-center">
+                <button
+                  type="button"
+                  className="au-link"
+                  onClick={() => navigate("/")}
+                >
+                  Return to Login
+                </button>
+              </p>
             </div>
+          )}
+
+          {/* Manual Help */}
+          <div className="au-help">
+            <h2 className="au-help-title">
+              Need help?
+            </h2>
+
+            <p>
+              If you no longer have access to your registered email
+              address, please contact TRAABCO support for assistance.
+            </p>
           </div>
-        </div>
+        </main>
 
-        <button
-          type="button"
-          className="fp-header-back"
-          onClick={() => navigate("/login")}
-        >
-          ← Back to sign in
-        </button>
-      </header>
-
-      <main className="fp-content">
-        <div className="fp-main-lock">
-          <svg
-            viewBox="0 0 24 24"
-            width="30"
-            height="30"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.7"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <rect x="5" y="10" width="14" height="10" rx="2" />
-            <path d="M8 10V7a4 4 0 0 1 8 0v3" />
-            <circle cx="12" cy="15" r="1" />
-          </svg>
-        </div>
-
-        <h1 className="fp-title">Forgot your password?</h1>
-
-        <p className="fp-description">
-          No problem. Enter the email address registered to your Traabco
-          account and we will send you a reset link.
-        </p>
-
-        <form onSubmit={handleSubmit} className="fp-form">
-          <div className="fp-field">
-            <label htmlFor="forgot-email">
-              Your registered email address <span>*</span>
-            </label>
-
-            <input
-              id="forgot-email"
-              type="email"
-              value={email}
-              placeholder="owner@kayas...co.za"
-              onChange={(e) => {
-                setEmail(e.target.value);
-                setEmailError("");
-              }}
-            />
-
-            {emailError && (
-              <p className="fp-error">{emailError}</p>
-            )}
-          </div>
-
-          <p className="fp-instruction">
-            This must match the email address you used when registering your
-            business with Traabco.
+        {/* Footer */}
+        <footer className="au-footer">
+          <p className="au-footer-line">
+            <button
+              type="button"
+              className="au-link"
+              onClick={() => navigate("/")}
+            >
+              Return to Login
+            </button>
           </p>
+        </footer>
 
-          <button type="submit" className="fp-submit-button">
-            Send reset link
-          </button>
-        </form>
-
-        <p className="fp-remembered">
-          Remembered it?{" "}
-          <button
-            type="button"
-            onClick={() => navigate("/login")}
-          >
-            Back to sign in
-          </button>
-        </p>
-
-        <div className="fp-help">
-          <h2>Don't have access to your email?</h2>
-
-          <p>
-            Call Traabco directly on{" "}
-            <strong>047 531 0000</strong> during office hours and we will
-            verify your identity and reset your account manually.
-          </p>
-
-          <p className="fp-contact">
-            No. 83 Madeira Street, Mthatha · info@traabco.co.za
-          </p>
-        </div>
-      </main>
+      </div>
     </div>
   );
 }

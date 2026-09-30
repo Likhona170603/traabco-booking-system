@@ -7,8 +7,9 @@ import BookingFailed from "./pages/BookingFailed";
 import PaymentDetail from "./pages/PaymentDetail"; 
 import MyAccount from "./pages/MyAccount";
 import Login from "./pages/Login";
-import ForgotPassword from "./pages/ForgotPassword";
 import Profile from "./pages/Profile";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 
 
 import RegisterBusinessDetails from "./pages/RegisterBusinessDetails";
@@ -55,14 +56,14 @@ function App() {
 } />
 
 
-        
-        {/* Login and Profile routing */}
+        {/*Profile routing  */}
         <Route path="/" element={<Login />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/dashboard" element={<MyAccount bookings={userBookings} />} />
 
-        
+<Route path="/forgot-password" element={<ForgotPassword />} />
+
+<Route path="/reset-password" element={<ResetPassword />} />
+
+<Route path="/dashboard" element={<MyAccount bookings={userBookings} />} />
         {/* Step 1 Route */}
         <Route path="/register" element={
           <RegisterBusinessDetails 
